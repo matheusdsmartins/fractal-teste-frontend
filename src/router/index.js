@@ -16,18 +16,17 @@ export default new Router({
     {
       path: '/beers',
       name: 'Beers',
-      component: Beers,
-      childen: [
-        {
-          path: 'page/:paged',
-          component: Beers
-        }
-      ]
+      component: Beers
     },
     {
       path: '/beers/:id',
       name: 'Beer',
       component: Beer
+    },
+    {
+      path: '/beers/page/:paged',
+      name: 'BeersPage',
+      component: Beers
     }
   ]
 })

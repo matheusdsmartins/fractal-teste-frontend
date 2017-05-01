@@ -1,49 +1,41 @@
 <template>
 <div class="beer">
   <h1>Cervejas</h1>
-  <div class="beer__img">
-    <img :src="beer[0].image_url">
+  <div v-if="beer">
+    <div class="beer__img">
+      <img :src="beer.image_url">
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tagline</th>
+          <th>Descrição</th>
+    </tr>
+    </thead>
+      <tbody>
+        <tr>
+          <td>{{beer.name}}</td>
+          <td>{{beer.tagline}}</td>
+          <td>{{beer.description}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Tagline</th>
-        <th>Descrição</th>
-  </tr>
-  </thead>
-    <tbody>
-      <tr>
-        <td>{{beer[0].name}}</td>
-        <td>{{beer[0].tagline}}</td>
-        <td>{{beer[0].description}}</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
+  <p v-else>Desculpe não foi possível encontrar esta cerveja.</p>
+</div>
 </template>
 
 <script>
-  import axios from 'axios'
-
+  import { mapState } from 'vuex'
   export default {
     name: 'beer',
-    data () {
-      return {
-        beer: [],
-        erros: []
-      }
-    },
     created () {
-      var url = `https://api.punkapi.com/v2/beers/${this.$route.params.id}`
-      axios.get(url)
-      .then(response => {
-        this.beer = response.data
-      })
-      .catch(e => {
-        this.erros.push(e)
-      })
-    }
+      this.$store.dispatch('fetchBeer', this.$route.params.id)
+    },
+    computed: mapState({
+      beer: state => state.beers[0]
+    })
   }
 </script>
 
@@ -53,8 +45,9 @@
     &__img {
       text-align: center;
       img {
-        width: 20%;
+        width: 5%;
         height: auto;
+        margin-bottom: 10px;
       }
     }
   }
