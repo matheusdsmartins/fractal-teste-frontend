@@ -16,6 +16,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-awesome/icons/eye'
 import 'vue-awesome/icons/search'
 import 'vue-awesome/icons/spinner'
+import 'vue-awesome/icons/beer'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
