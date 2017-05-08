@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
-    "axios": "file:node_modules\\axios",
+    "axios": "^0.16.1",
     "bootstrap-vue": "^0.14.0",
     "chalk": "^1.1.3",
     "jquery": "^3.2.1",
