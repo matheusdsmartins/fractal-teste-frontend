@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import BootstrapVue from 'bootstrap-vue'
-import Icon from 'vue-awesome/components/Icon'
+import Icon from 'vue-awesome'
 
 import store from './vuex/store'
 import router from './router'
